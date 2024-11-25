@@ -61,5 +61,42 @@ getgenv().loopW = state
     end)
 	end	  
 })
+ Tab: AddToggle(
+        "Auto Lay Bang Gac",
+        "BangGac",
+        false,
+        function(toggled)
+            AutoLayBangGac = toggled
+        end
+    )
+    function GetBackpack(Weapon) 
+        game:GetService("ReplicatedStorage").KnitPackages._Index:FindFirstChild("sleitnick_knit@1.7.0").knit.Services.InventoryService.RE.updateInventory:FireServer("refresh")
+        game:GetService("ReplicatedStorage"):WaitForChild("KnitPackages")
+            :WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0")
+            :WaitForChild("knit"):WaitForChild("Services")
+            :WaitForChild("InventoryService"):WaitForChild("RE")
+            :WaitForChild("updateInventory"):FireServer("eue", Weapon)
+    end
+    spawn(function()
+     while wait(.3) do
+       if AutoLayBangGac then
+           if not game.Players.LocalPlayer.Backpack:FindFirstChild('băng gạc') then
+           GetBackpack('băng gạc')
+           end
+       end
+     end
+    end)
+    w1:Label("Cua Hang")
+    SoluongBangGac = 1
+    w1:Slider(
+        "Count :",
+        "CpuntBangGac",
+        1,
+        99,
+        function(value)
+            SoluongBangGac = value
+        end,
+        1
+    )
 
 OrionLib:Init()
